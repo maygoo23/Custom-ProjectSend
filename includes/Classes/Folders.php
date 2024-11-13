@@ -59,14 +59,13 @@ class Folders
 
     function getFolders($arguments = [])
     {
-        // @Matani-Git fix > change folders public flag to 1, if 0 the clients can not access folders! permissions signed by files, not folders.
+        // Change folders public flag to 1, if 0 the clients can not access folders! permissions signed by files, not folders.
         $queryx = "UPDATE `tbl_folders` set public = 1 ";
         $statement = $this->dbh->prepare($queryx);
         $statement->execute();
-		 //public flag fix
         $folders = [];
 		
-		 // @Matani-Git fix > get Client access level because the the r1720 still do not set the public and client_id arguments when client logged in.
+	 // @Matani-Git fix > get Client access level because the the r1720 still do not set the public and client_id arguments when client logged in.
         if (!isset($arguments['level']) && isset($arguments['user_id'])) {
             $arguments['level'] = $this->getUserLevel($arguments['user_id']);
             if ($arguments['level'] === 0 && !isset($arguments['client_id'])) {
@@ -77,8 +76,8 @@ class Folders
         $query = "SELECT DISTINCT f.* FROM " . TABLE_FOLDERS . " f";
         $params = [];
 		
-		// @Matani-Git fix > if client is logged in (level 0), the client will see just folders that contain files that are assigned to the logged client or files assigned 
-		// to group and client is a group member.
+	// If client is logged in (level 0), the client will see just folders that contain files that are assigned to the logged client or files assigned 
+	// to group and client is a group member.
         // Modified client level access (level = 0) with group support
         if (isset($arguments['level']) && $arguments['level'] === 0 && isset($arguments['client_id'])) {
             $query .= " WHERE (
