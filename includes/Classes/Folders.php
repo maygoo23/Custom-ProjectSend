@@ -56,31 +56,32 @@ class Folders
         return $elements;
     }
 
-
     function getFolders($arguments = [])
     {
-        // Change folders public flag to 1, if 0 the clients can not access folders! permissions signed by files, not folders.
+        // Existing public flag fix
         $queryx = "UPDATE `tbl_folders` set public = 1 ";
         $statement = $this->dbh->prepare($queryx);
         $statement->execute();
+        
+        // Initialize $folders as an empty array
         $folders = [];
-		
-	 // @Matani-Git fix > get Client access level because the the r1720 still do not set the public and client_id arguments when client logged in.
+        
+        // Get client access level if not provided
         if (!isset($arguments['level']) && isset($arguments['user_id'])) {
             $arguments['level'] = $this->getUserLevel($arguments['user_id']);
             if ($arguments['level'] === 0 && !isset($arguments['client_id'])) {
                 $arguments['client_id'] = $arguments['user_id'];
             }
         }
-
+    
         $query = "SELECT DISTINCT f.* FROM " . TABLE_FOLDERS . " f";
         $params = [];
-		
-	// If client is logged in (level 0), the client will see just folders that contain files that are assigned to the logged client or files assigned 
-	// to group and client is a group member.
-        // Modified client level access (level = 0) with group support
+    
         if (isset($arguments['level']) && $arguments['level'] === 0 && isset($arguments['client_id'])) {
             $query .= " WHERE (
+                -- Folders created by the client
+                f.user_id = :client_created
+                OR 
                 -- Get folders through direct file assignments or group memberships
                 EXISTS (
                     SELECT 1 
@@ -131,6 +132,7 @@ class Folders
                 )
             )";
             
+            $params[':client_created'] = $arguments['client_id'];
             $params[':client_id'] = $arguments['client_id'];
             $params[':client_id_groups'] = $arguments['client_id'];
             $params[':client_id_hierarchy'] = $arguments['client_id'];
@@ -148,7 +150,6 @@ class Folders
         } else {
             // Admin access remains unchanged...
             $where_conditions = [];
-
             if (array_key_exists('parent', $arguments)) {
                 if (is_null($arguments['parent'])) {
                     $where_conditions[] = "f.parent IS NULL";
@@ -157,19 +158,19 @@ class Folders
                     $params[':parent'] = (int)$arguments['parent'];
                 }
             }
-
+    
             if (isset($arguments['search'])) {
                 $where_conditions[] = "(f.name LIKE :name OR f.slug LIKE :slug)";
                 $search_terms = '%' . $arguments['search'] . '%';
                 $params[':name'] = $search_terms;
                 $params[':slug'] = $search_terms;
             }
-
+    
             if (isset($arguments['include_public']) && $arguments['include_public'] == true) {
                 $where_conditions[] = "f.public = :public";
                 $params[':public'] = '1';    
             }
-
+    
             if (isset($arguments['user_id'])) {
                 $where_conditions[] = "f.user_id = :user_id";
                 $params[':user_id'] = $arguments['user_id'];
@@ -180,16 +181,20 @@ class Folders
                 $params[':public_client'] = '1';
                 $params[':client_id'] = $arguments['client_id'];
             }
-
+    
             if (!empty($where_conditions)) {
                 $query .= " WHERE " . implode(" AND ", $where_conditions);
             }
         }
-
+    
         $query .= " ORDER BY f.name ASC";
-
+    
         $statement = $this->dbh->prepare($query);
         $statement->execute($params);
+        
+        // Initialize $folders before using it
+        $folders = [];
+        
         if ($statement->rowCount() > 0) {
             $statement->setFetchMode(\PDO::FETCH_ASSOC);
             while ($row = $statement->fetch()) {
@@ -197,7 +202,7 @@ class Folders
                 $folders[$row['id']] = $obj->getData();
             }
         }
-
+    
         $this->folders = $folders;
         return $this->folders;
     }
