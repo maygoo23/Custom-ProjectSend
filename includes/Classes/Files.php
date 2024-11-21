@@ -935,6 +935,18 @@ class Files
         }
 
         $is_public = (is_null($this->is_public) ? 0 : $this->is_public);
+        // Handle expires value (integer field)
+        $expires = (!empty($this->expires)) ? $this->expires : 0;
+
+        // Handle expiry_date
+        if (empty($this->expiry_date)) {
+            // If expiry_date is not set, use current date + 1 year
+            $expiry_date = date('Y-m-d H:i:s', strtotime('+1 year'));
+        } else {
+            // Use the provided expiry_date
+            $expiry_date = $this->expiry_date;
+        }
+
         $statement = $this->dbh->prepare("UPDATE " . TABLE_FILES . " SET
             filename = :title,
             description = :description,
@@ -947,13 +959,12 @@ class Files
 
         $statement->bindParam(':title', $this->name);
         $statement->bindParam(':description', $this->description);
-        $statement->bindParam(':expires', $this->expires, PDO::PARAM_INT);
-        $statement->bindParam(':expiry_date', $this->expiry_date);
+        $statement->bindParam(':expires', $expires, PDO::PARAM_INT);  // Using our new $expires variable
+        $statement->bindParam(':expiry_date', $expiry_date);
         $statement->bindParam(':public', $is_public, PDO::PARAM_INT);
         $statement->bindParam(':folder_id', $this->folder_id);
         $statement->bindParam(':id', $this->id, PDO::PARAM_INT);
         $statement->execute();
-
         $hidden = (!empty($data['hidden']) && is_numeric($data['hidden'])) ? $data['hidden'] : 0;
 
 		if (!empty($statement)) {
