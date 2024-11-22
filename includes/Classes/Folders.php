@@ -76,67 +76,72 @@ class Folders
     
         $query = "SELECT DISTINCT f.* FROM " . TABLE_FOLDERS . " f";
         $params = [];
-    
         if (isset($arguments['level']) && $arguments['level'] === 0 && isset($arguments['client_id'])) {
             $query .= " WHERE (
-                -- Folders created by the client
-                f.user_id = :client_created
-                OR 
-                -- Get folders through direct file assignments or group memberships
-                EXISTS (
-                    SELECT 1 
-                    FROM " . TABLE_FILES_RELATIONS . " fr 
+            -- Folders created by the client
+            f.user_id = :client_created
+            OR
+            -- Get folders that contain files created by current user (added condition)
+            EXISTS (
+                SELECT 1
+                FROM " . TABLE_FILES . " tf
+                WHERE tf.folder_id = f.id
+                AND tf.user_id = :current_user_id
+            )
+            OR
+            -- Get folders through direct file assignments or group memberships
+            EXISTS (
+                SELECT 1
+                FROM " . TABLE_FILES_RELATIONS . " fr
+                JOIN " . TABLE_FILES . " tf ON fr.file_id = tf.id
+                WHERE tf.folder_id = f.id
+                AND fr.hidden = 0
+                AND (
+                    -- Direct client assignment
+                    fr.client_id = :client_id
+                    OR
+                    -- Group assignment
+                    fr.group_id IN (
+                        SELECT group_id
+                        FROM " . TABLE_MEMBERS . "
+                        WHERE client_id = :client_id_groups
+                    )
+                )
+            )
+            OR
+            -- Include all parent folders of accessible folders
+            f.id IN (
+                WITH RECURSIVE folder_hierarchy AS (
+                    -- Base case: Get folders with directly accessible files
+                    SELECT DISTINCT tf.folder_id as id, fld.parent
+                    FROM " . TABLE_FILES_RELATIONS . " fr
                     JOIN " . TABLE_FILES . " tf ON fr.file_id = tf.id
-                    WHERE tf.folder_id = f.id 
-                    AND fr.hidden = 0
+                    JOIN " . TABLE_FOLDERS . " fld ON tf.folder_id = fld.id
+                    WHERE fr.hidden = 0
                     AND (
-                        -- Direct client assignment
-                        fr.client_id = :client_id
-                        OR 
-                        -- Group assignment
+                        fr.client_id = :client_id_hierarchy
+                        OR
                         fr.group_id IN (
-                            SELECT group_id 
-                            FROM " . TABLE_MEMBERS . " 
-                            WHERE client_id = :client_id_groups
+                            SELECT group_id
+                            FROM " . TABLE_MEMBERS . "
+                            WHERE client_id = :client_id_groups_hierarchy
                         )
                     )
+                    UNION ALL
+                    -- Recursive case: Get all parent folders
+                    SELECT f2.id, f2.parent
+                    FROM " . TABLE_FOLDERS . " f2
+                    INNER JOIN folder_hierarchy fh ON f2.id = fh.parent
                 )
-                OR 
-                -- Include all parent folders of accessible folders
-                f.id IN (
-                    WITH RECURSIVE folder_hierarchy AS (
-                        -- Base case: Get folders with directly accessible files
-                        SELECT DISTINCT tf.folder_id as id, fld.parent
-                        FROM " . TABLE_FILES_RELATIONS . " fr
-                        JOIN " . TABLE_FILES . " tf ON fr.file_id = tf.id
-                        JOIN " . TABLE_FOLDERS . " fld ON tf.folder_id = fld.id
-                        WHERE fr.hidden = 0
-                        AND (
-                            fr.client_id = :client_id_hierarchy
-                            OR 
-                            fr.group_id IN (
-                                SELECT group_id 
-                                FROM " . TABLE_MEMBERS . " 
-                                WHERE client_id = :client_id_groups_hierarchy
-                            )
-                        )
-                        
-                        UNION ALL
-                        
-                        -- Recursive case: Get all parent folders
-                        SELECT f2.id, f2.parent
-                        FROM " . TABLE_FOLDERS . " f2
-                        INNER JOIN folder_hierarchy fh ON f2.id = fh.parent
-                    )
-                    SELECT id FROM folder_hierarchy
-                )
-            )";
-            
-            $params[':client_created'] = $arguments['client_id'];
-            $params[':client_id'] = $arguments['client_id'];
-            $params[':client_id_groups'] = $arguments['client_id'];
-            $params[':client_id_hierarchy'] = $arguments['client_id'];
-            $params[':client_id_groups_hierarchy'] = $arguments['client_id'];
+                SELECT id FROM folder_hierarchy
+            )
+        )";
+        $params[':client_created'] = $arguments['client_id'];
+        $params[':current_user_id'] = $arguments['client_id'];
+        $params[':client_id'] = $arguments['client_id'];
+        $params[':client_id_groups'] = $arguments['client_id'];
+        $params[':client_id_hierarchy'] = $arguments['client_id'];
+        $params[':client_id_groups_hierarchy'] = $arguments['client_id'];
             
             // Parent folder filter for clients
             if (array_key_exists('parent', $arguments)) {
