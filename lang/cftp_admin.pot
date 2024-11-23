@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ProjectSend admin\n"
-"POT-Creation-Date: 2024-08-02 23:28-0300\n"
+"POT-Creation-Date: 2024-11-12 20:38-0300\n"
 "PO-Revision-Date: 2016-09-14 15:19-0300\n"
 "Last-Translator: \n"
 "Language-Team: ProjectSend <contact@projectsend.org>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.3\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -145,7 +145,7 @@ msgstr ""
 
 #: categories.php:186 files-edit.php:206 groups.php:231
 #: includes/forms/categories.php:52 includes/forms/file_editor.php:50
-#: includes/forms/groups.php:29 manage-files.php:546
+#: includes/forms/groups.php:29 manage-files.php:547
 msgid "Description"
 msgstr ""
 
@@ -155,7 +155,7 @@ msgstr ""
 
 #: categories.php:194 clients.php:245 custom-assets.php:217 files-edit.php:217
 #: groups.php:257 import-orphans.php:222 manage-downloads.php:393
-#: manage-files.php:603 users.php:261
+#: manage-files.php:604 users.php:261
 msgid "Actions"
 msgstr ""
 
@@ -166,7 +166,7 @@ msgstr ""
 
 #: categories.php:267 clients.php:352 custom-assets.php:258 groups.php:323
 #: manage-downloads.php:290 manage-downloads.php:472 manage-files.php:451
-#: manage-files.php:821 users.php:325
+#: manage-files.php:822 users.php:325
 msgid "Edit"
 msgstr ""
 
@@ -303,7 +303,7 @@ msgstr ""
 msgid "Account"
 msgstr ""
 
-#: clients-requests.php:286 manage-downloads.php:361 manage-files.php:536
+#: clients-requests.php:286 manage-downloads.php:361 manage-files.php:537
 msgid "Added on"
 msgstr ""
 
@@ -364,7 +364,7 @@ msgstr ""
 msgid "Files: Groups"
 msgstr ""
 
-#: clients.php:224 manage-files.php:584 users.php:252
+#: clients.php:224 manage-files.php:585 users.php:252
 msgid "Status"
 msgstr ""
 
@@ -381,12 +381,12 @@ msgid "Max. upload size"
 msgstr ""
 
 #: clients.php:339 download-information.php:158
-#: includes/forms/options/external_login.php:101 manage-files.php:661
+#: includes/forms/options/external_login.php:101 manage-files.php:662
 msgid "Yes"
 msgstr ""
 
 #: clients.php:339 download-information.php:159
-#: includes/forms/options/external_login.php:102 manage-files.php:661
+#: includes/forms/options/external_login.php:102 manage-files.php:662
 msgid "No"
 msgstr ""
 
@@ -503,12 +503,12 @@ msgid "Disable"
 msgstr ""
 
 #: custom-assets.php:194 files-edit.php:203 includes/forms/assets.php:33
-#: includes/forms/file_editor.php:45 manage-downloads.php:348 manage-files.php:526
+#: includes/forms/file_editor.php:45 manage-downloads.php:348 manage-files.php:527
 msgid "Title"
 msgstr ""
 
 #: custom-assets.php:204 includes/forms/login-ldap.php:16
-#: includes/forms/options/general.php:127 includes/layout/header-top.php:26
+#: includes/forms/options/general.php:147 includes/layout/header-top.php:26
 #: install/make-config.php:292
 msgid "Language"
 msgstr ""
@@ -534,7 +534,7 @@ msgstr ""
 msgid "There are no recorded downloads for this file"
 msgstr ""
 
-#: download-information.php:83 manage-downloads.php:388 manage-files.php:598
+#: download-information.php:83 manage-downloads.php:388 manage-files.php:599
 msgid "Total downloads"
 msgstr ""
 
@@ -571,15 +571,15 @@ msgid "E-mail templates"
 msgstr ""
 
 #: email-preview.php:8 manage-downloads.php:354 manage-downloads.php:419
-#: manage-files.php:529 manage-files.php:648
+#: manage-files.php:530 manage-files.php:649
 msgid "Preview"
 msgstr ""
 
-#: email-templates.php:47 options.php:113 options.php:226 templates.php:29
+#: email-templates.php:47 options.php:115 options.php:228 templates.php:29
 msgid "Options updated successfully."
 msgstr ""
 
-#: email-templates.php:49 options.php:228 templates.php:31
+#: email-templates.php:49 options.php:230 templates.php:31
 msgid "There was an error. Please try again."
 msgstr ""
 
@@ -646,7 +646,7 @@ msgid ""
 "the preview."
 msgstr ""
 
-#: email-templates.php:181 options.php:287
+#: email-templates.php:181 options.php:289
 msgid "Save options"
 msgstr ""
 
@@ -1161,7 +1161,7 @@ msgstr ""
 msgid "IP address not found"
 msgstr ""
 
-#: includes/Classes/BruteForceBlock.php:85
+#: includes/Classes/BruteForceBlock.php:85 unblock-ip.php:22
 msgid "IP address successfully unblocked"
 msgstr ""
 
@@ -1728,7 +1728,7 @@ msgstr ""
 msgid "Create"
 msgstr ""
 
-#: includes/forms/categories.php:13 includes/forms/file_editor.php:357
+#: includes/forms/categories.php:13 includes/forms/file_editor.php:361
 msgid "Save"
 msgstr ""
 
@@ -1737,8 +1737,8 @@ msgid "Parent"
 msgstr ""
 
 #: includes/forms/categories.php:45 includes/forms/options/clients.php:53
-#: includes/forms/options/clients.php:102 includes/forms/options/email.php:166
-#: manage-files.php:670
+#: includes/forms/options/clients.php:112 includes/forms/options/email.php:166
+#: manage-files.php:671
 msgid "None"
 msgstr ""
 
@@ -1915,7 +1915,7 @@ msgid "Assignations"
 msgstr ""
 
 #: includes/forms/file_editor.php:134 includes/layout/main-menu.php:65
-#: includes/layout/main-menu.php:168 includes/widgets/counters.php:42 options.php:28
+#: includes/layout/main-menu.php:168 includes/widgets/counters.php:42 options.php:29
 msgid "Clients"
 msgstr ""
 
@@ -1924,7 +1924,7 @@ msgid "Hidden (will not send notifications or show into the files list)"
 msgstr ""
 
 #: includes/forms/file_editor.php:189 includes/layout/main-menu.php:55
-#: manage-files.php:579
+#: manage-files.php:580
 msgid "Categories"
 msgstr ""
 
@@ -1964,19 +1964,19 @@ msgstr ""
 msgid "Hidden status"
 msgstr ""
 
-#: includes/forms/file_editor.php:299
+#: includes/forms/file_editor.php:301
 msgid "Selected categories"
 msgstr ""
 
-#: includes/forms/file_editor.php:309
+#: includes/forms/file_editor.php:313
 msgid "Selected folder"
 msgstr ""
 
-#: includes/forms/file_editor.php:323
+#: includes/forms/file_editor.php:327
 msgid "Apply to all files"
 msgstr ""
 
-#: includes/forms/file_editor.php:348
+#: includes/forms/file_editor.php:352
 #, php-format
 msgid "File not found on disk: %s"
 msgstr ""
@@ -2085,67 +2085,75 @@ msgstr ""
 msgid "Clients can set expiration Date"
 msgstr ""
 
-#: includes/forms/options/clients.php:97
+#: includes/forms/options/clients.php:99
+msgid "Clients can asssign categories to files"
+msgstr ""
+
+#: includes/forms/options/clients.php:101
+msgid "IMPORTANT: This will make all categories visible to all users."
+msgstr ""
+
+#: includes/forms/options/clients.php:107
 msgid "Clients can set own files as public:"
 msgstr ""
 
-#: includes/forms/options/clients.php:103
+#: includes/forms/options/clients.php:113
 msgid "Allowed ones"
 msgstr ""
 
-#: includes/forms/options/clients.php:104
+#: includes/forms/options/clients.php:114
 msgid "All clients"
 msgstr ""
 
-#: includes/forms/options/clients.php:113
+#: includes/forms/options/clients.php:123
 msgid ""
 "If selecting 'allowed ones': please edit each allowed client and set the "
 "corresponding permissions."
 msgstr ""
 
-#: includes/forms/options/clients.php:120
+#: includes/forms/options/clients.php:130
 msgid "New self registered clients can upload public files by default."
 msgstr ""
 
-#: includes/forms/options/clients.php:122
+#: includes/forms/options/clients.php:132
 msgid "Specific option when selecting 'allowed ones' in the previous option."
 msgstr ""
 
-#: includes/forms/options/clients.php:129
+#: includes/forms/options/clients.php:139
 msgid "Allow clients to assign files to public folders"
 msgstr ""
 
-#: includes/forms/options/clients.php:131
+#: includes/forms/options/clients.php:141
 msgid "Any file assigned to a public folder automatically becomes public too."
 msgstr ""
 
-#: includes/forms/options/clients.php:131
+#: includes/forms/options/clients.php:141
 msgid ""
 "Important: inherits permission from the setting \"Clients can set own files as "
 "public\"."
 msgstr ""
 
-#: includes/forms/options/clients.php:137
+#: includes/forms/options/clients.php:147
 msgid "When a file expires:"
 msgstr ""
 
-#: includes/forms/options/clients.php:140
+#: includes/forms/options/clients.php:150
 msgid "Don't show it on the files list"
 msgstr ""
 
-#: includes/forms/options/clients.php:141
+#: includes/forms/options/clients.php:151
 msgid "Show it anyway, but prevent download."
 msgstr ""
 
-#: includes/forms/options/clients.php:143
+#: includes/forms/options/clients.php:153
 msgid "This only affects clients. On the admin side, you can still get the files."
 msgstr ""
 
-#: includes/forms/options/clients.php:150
+#: includes/forms/options/clients.php:160
 msgid "Show public files and folders on client's files lists"
 msgstr ""
 
-#: includes/forms/options/clients.php:152
+#: includes/forms/options/clients.php:162
 msgid ""
 "When a client logs in, all public files will also be shown using the selected "
 "template, next to the files assigned to their account."
@@ -2177,7 +2185,7 @@ msgstr ""
 
 #: includes/forms/options/cron.php:22
 msgid ""
-"It's recommended to keep this checked to prevent unauthorized executions of the "
+"It's recommended to keep this checked to prevent unathorized executions of the "
 "tasks by accessing the URL directly."
 msgstr ""
 
@@ -2188,7 +2196,7 @@ msgid ""
 msgstr ""
 
 #: includes/forms/options/cron.php:31
-msgid "Cron security key"
+msgid "Cron securiy key"
 msgstr ""
 
 #: includes/forms/options/cron.php:34
@@ -2516,132 +2524,143 @@ msgstr ""
 msgid "For new uploads only. Will not affect existing files."
 msgstr ""
 
-#: includes/forms/options/general.php:93
+#: includes/forms/options/general.php:94
+msgid "Chunk size"
+msgstr ""
+
+#: includes/forms/options/general.php:108
+msgid ""
+"Uploaded files are split into chunks which are then compiled on your server. Be "
+"sure to check by uploading one small and large files after changing this setting "
+"to make sure your internet connection and server can handle them."
+msgstr ""
+
+#: includes/forms/options/general.php:113
 msgid "Uploads defaults"
 msgstr ""
 
-#: includes/forms/options/general.php:98
+#: includes/forms/options/general.php:118
 msgid "Files expire by default"
 msgstr ""
 
-#: includes/forms/options/general.php:101
+#: includes/forms/options/general.php:121
 msgid ""
 "Users can always set an expiration date for files. This option just makes the "
 "checkbox marked by default in the editor."
 msgstr ""
 
-#: includes/forms/options/general.php:102 includes/forms/options/general.php:113
+#: includes/forms/options/general.php:122 includes/forms/options/general.php:133
 msgid ""
 "For clients not allowed to set it, this setting will be directly applied to the "
 "file."
 msgstr ""
 
-#: includes/forms/options/general.php:109
+#: includes/forms/options/general.php:129
 msgid "Files are public by default"
 msgstr ""
 
-#: includes/forms/options/general.php:112
+#: includes/forms/options/general.php:132
 msgid ""
 "Users can always set a download to be public. This option just makes the checkbox "
 "marked by default in the editor."
 msgstr ""
 
-#: includes/forms/options/general.php:119
+#: includes/forms/options/general.php:139
 msgid "After these many days:"
 msgstr ""
 
-#: includes/forms/options/general.php:132
+#: includes/forms/options/general.php:152
 msgid "Detect user browser language"
 msgstr ""
 
-#: includes/forms/options/general.php:133
+#: includes/forms/options/general.php:153
 msgid ""
 "If available, will override the default one from the system configuration file. "
 "Affects all users and clients."
 msgstr ""
 
-#: includes/forms/options/general.php:140 includes/forms/options/privacy.php:22
+#: includes/forms/options/general.php:160 includes/forms/options/privacy.php:22
 #: includes/widgets/counters.php:37
 msgid "Downloads"
 msgstr ""
 
-#: includes/forms/options/general.php:142
+#: includes/forms/options/general.php:162
 msgid "Download method"
 msgstr ""
 
-#: includes/forms/options/general.php:150
+#: includes/forms/options/general.php:170
 msgid ""
 "Serving files with php is the default method and does not require any changes to "
 "your webserver. However, very large files could download with errors depending on "
 "your php configuration."
 msgstr ""
 
-#: includes/forms/options/general.php:153
+#: includes/forms/options/general.php:173
 msgid ""
 "XSendfile improves downloads by allowing the web server to send the file directly "
 "bypassing php and it's limitations. This in an advanced feature that requires you "
 "to install and enable a module on your server."
 msgstr ""
 
-#: includes/forms/options/general.php:154
+#: includes/forms/options/general.php:174
 msgid ""
 "Be aware that if the module is not set up correctly, downloads will trigger but "
 "the files will have a length of 0 bytes."
 msgstr ""
 
-#: includes/forms/options/general.php:157
+#: includes/forms/options/general.php:177
 msgid ""
 "X-Accel is a method available in nginx that allows the system to serve files "
 "directly, bypassing php and it's limitations. To configure it, you need to edit "
 "your server block and add the following code:"
 msgstr ""
 
-#: includes/forms/options/general.php:170
+#: includes/forms/options/general.php:190
 msgid "Do not log downloads by the file's uploader"
 msgstr ""
 
-#: includes/forms/options/general.php:171
+#: includes/forms/options/general.php:191
 msgid ""
 "When a user or client downloads their own files, do not log the download or add "
 "to the downloads count."
 msgstr ""
 
-#: includes/forms/options/general.php:178
+#: includes/forms/options/general.php:198
 msgid "System location"
 msgstr ""
 
-#: includes/forms/options/general.php:179
+#: includes/forms/options/general.php:199
 msgid ""
 "These options are to be changed only if you are moving the system to another "
 "place. Changes here can cause ProjectSend to stop working."
 msgstr ""
 
-#: includes/forms/options/general.php:182
+#: includes/forms/options/general.php:202
 msgid "System URI"
 msgstr ""
 
-#: includes/forms/options/general.php:188
+#: includes/forms/options/general.php:208
 msgid "Custom download URI"
 msgstr ""
 
-#: includes/forms/options/general.php:191
+#: includes/forms/options/general.php:211
 msgid "Custom download URI base"
 msgstr ""
 
-#: includes/forms/options/general.php:195
+#: includes/forms/options/general.php:215
 #, php-format
 msgid ""
 "The default URL base is %s. If you set up a custom domain that acts as shortener "
 "set the URL here."
 msgstr ""
 
-#: includes/forms/options/general.php:196
+#: includes/forms/options/general.php:216
 #, php-format
 msgid "When setting up your vhost, make sure to redirect to %s"
 msgstr ""
 
 #: includes/forms/options/privacy.php:1 includes/layout/main-menu.php:172
-#: options.php:41
+#: options.php:43
 msgid "Privacy"
 msgstr ""
 
@@ -3413,11 +3432,11 @@ msgid "In <head>"
 msgstr ""
 
 #: includes/functions.assets.php:26
-msgid "After <body>"
+msgid "Before <body>"
 msgstr ""
 
 #: includes/functions.assets.php:27
-msgid "Before </body>"
+msgid "After </body>"
 msgstr ""
 
 #: includes/functions.forms.php:16
@@ -3554,26 +3573,26 @@ msgid ""
 "working correctly."
 msgstr ""
 
-#: includes/header-messages.php:34 includes/header-messages.php:58
+#: includes/header-messages.php:48 includes/header-messages.php:72
 msgid "Warning:"
 msgstr ""
 
-#: includes/header-messages.php:34
+#: includes/header-messages.php:48
 msgid "The following directories do not exist or have write permissions errors."
 msgstr ""
 
-#: includes/header-messages.php:35
+#: includes/header-messages.php:49
 msgid "File uploading or other important functions might not work."
 msgstr ""
 
-#: includes/header-messages.php:58
+#: includes/header-messages.php:72
 #, php-format
 msgid ""
 "One or more temporary zip files could not be deleted. Files older than %s hours "
 "are generally considered safe to delete."
 msgstr ""
 
-#: includes/header-messages.php:59
+#: includes/header-messages.php:73
 #, php-format
 msgid "To make space on your disk, you can manually delete old files from %s"
 msgstr ""
@@ -3653,23 +3672,23 @@ msgstr ""
 msgid "General options"
 msgstr ""
 
-#: includes/layout/main-menu.php:176 options.php:54
+#: includes/layout/main-menu.php:176 options.php:56
 msgid "E-mail notifications"
 msgstr ""
 
-#: includes/layout/main-menu.php:180 options.php:66
+#: includes/layout/main-menu.php:180 options.php:68
 msgid "Security"
 msgstr ""
 
-#: includes/layout/main-menu.php:184 options.php:78
+#: includes/layout/main-menu.php:184 options.php:80
 msgid "Branding"
 msgstr ""
 
-#: includes/layout/main-menu.php:188 options.php:82
+#: includes/layout/main-menu.php:188 options.php:84
 msgid "External Login"
 msgstr ""
 
-#: includes/layout/main-menu.php:192 options.php:86
+#: includes/layout/main-menu.php:192 options.php:88
 msgid "Scheduled tasks (cron)"
 msgstr ""
 
@@ -3697,7 +3716,7 @@ msgstr ""
 msgid "Account Manager"
 msgstr ""
 
-#: includes/text.strings.php:10 manage-files.php:74 manage-files.php:554
+#: includes/text.strings.php:10 manage-files.php:74 manage-files.php:555
 msgid "Uploader"
 msgstr ""
 
@@ -4105,7 +4124,7 @@ msgstr ""
 msgid "ProjectSend %s has been released"
 msgstr ""
 
-#: includes/updates.messages.php:52 manage-files.php:665
+#: includes/updates.messages.php:52 manage-files.php:666
 msgid "Download"
 msgstr ""
 
@@ -4309,7 +4328,7 @@ msgid "Everything is up and running."
 msgstr ""
 
 #: install/install-success.php:19
-msgid "You may proceed to log in with your newly created username and password."
+msgid "You may proceed to log in with your newely created username and password."
 msgstr ""
 
 #: install/make-config.php:140
@@ -4424,11 +4443,11 @@ msgstr ""
 msgid "Creator"
 msgstr ""
 
-#: manage-downloads.php:278 manage-files.php:439 manage-files.php:695
+#: manage-downloads.php:278 manage-files.php:439 manage-files.php:696
 msgid "Visible"
 msgstr ""
 
-#: manage-downloads.php:279 manage-files.php:440 manage-files.php:695
+#: manage-downloads.php:279 manage-files.php:440 manage-files.php:696
 msgid "Hidden"
 msgstr ""
 
@@ -4436,15 +4455,15 @@ msgstr ""
 msgid "File"
 msgstr ""
 
-#: manage-downloads.php:374 manage-files.php:573
+#: manage-downloads.php:374 manage-files.php:574
 msgid "Expiry"
 msgstr ""
 
-#: manage-downloads.php:381 manage-files.php:591
+#: manage-downloads.php:381 manage-files.php:592
 msgid "Download count"
 msgstr ""
 
-#: manage-downloads.php:434 manage-files.php:677
+#: manage-downloads.php:434 manage-files.php:678
 msgid "Does not expire"
 msgstr ""
 
@@ -4452,11 +4471,11 @@ msgstr ""
 msgid "File is not public"
 msgstr ""
 
-#: manage-downloads.php:445 manage-files.php:683
+#: manage-downloads.php:445 manage-files.php:684
 msgid "Expired on"
 msgstr ""
 
-#: manage-downloads.php:448 manage-files.php:686
+#: manage-downloads.php:448 manage-files.php:687
 msgid "Expires on"
 msgstr ""
 
@@ -4468,7 +4487,7 @@ msgstr ""
 msgid "All files"
 msgstr ""
 
-#: manage-files.php:85 manage-files.php:559
+#: manage-files.php:85 manage-files.php:560
 msgid "Assigned"
 msgstr ""
 
@@ -4520,35 +4539,35 @@ msgstr ""
 msgid "Unassign"
 msgstr ""
 
-#: manage-files.php:540
+#: manage-files.php:541
 msgid "Ext."
 msgstr ""
 
-#: manage-files.php:549
+#: manage-files.php:550
 msgid "Size"
 msgstr ""
 
-#: manage-files.php:566
+#: manage-files.php:567
 msgid "Public permissions"
 msgstr ""
 
-#: manage-files.php:668
+#: manage-files.php:669
 msgid "View information"
 msgstr ""
 
-#: manage-files.php:700
+#: manage-files.php:701
 msgid "times"
 msgstr ""
 
-#: manage-files.php:742
+#: manage-files.php:743
 msgid "downloads"
 msgstr ""
 
-#: options.php:201
+#: options.php:203
 msgid "Some fields were not completed. Options could not be saved."
 msgstr ""
 
-#: options.php:251
+#: options.php:253
 msgid ""
 "Warning: php extension is allowed. This is a serious security problem. If you are "
 "not sure that you need it, please remove it from the list."
@@ -4588,10 +4607,6 @@ msgstr ""
 
 #: reset-password.php:8
 msgid "Lost password"
-msgstr ""
-
-#: unblock-ip.php:22
-msgid "IP address successfully unblocked"
 msgstr ""
 
 #: unblock-ip.php:40

@@ -41,32 +41,6 @@ $found_groups = $get_groups->getGroupsByClient([
     'return' => 'list',
 ]);
 
-// Folders
-$current_folder = (isset($_GET['folder_id'])) ? (int)$_GET['folder_id'] : null;
-// Check permissions for current folder
-if (!empty($current_folder)) {
-    $folder = new \ProjectSend\Classes\Folder($current_folder);
-    if (!$folder->userCanNavigate($client_info['id'])) {
-        exit_with_error_code(403);
-    }
-}
-
-$folders_arguments = [
-    'parent' => $current_folder,
-];
-if (get_option('clients_files_list_include_public')) {
-    $folders_arguments['public_or_client'] = true;
-    $folders_arguments['client_id'] = $client_info['id'];
-} else {
-    $folders_arguments['user_id'] = $client_info['id'];
-}
-if (!empty($_GET['search'])) {
-    $folders_arguments['search'] = $_GET['search'];
-}
-
-$folders_obj = new \ProjectSend\Classes\Folders;
-$folders = $folders_obj->getFolders($folders_arguments);
-
 /**
  * Define the arrays so they can't be empty
  */
@@ -114,6 +88,44 @@ while ($row_files = $files_sql->fetch()) {
 }
 
 $found_unique_files_ids = implode(',', array_unique($found_all_files_array));
+
+// Folders
+$temp_files_query = "SELECT * FROM " . TABLE_FILES . " WHERE (FIND_IN_SET(id,:search_ids));";
+$files_folders = $dbh->prepare($temp_files_query);
+$files_folders->execute([':search_ids' => $found_unique_files_ids]);
+$folder_id_in = [];
+while ($f = $count_sql->fetch()) {
+    if (!empty($f['folder_id'])) {
+        $folder_id_in[] = $f['folder_id'];
+    }
+}
+
+$current_folder = (isset($_GET['folder_id'])) ? (int)$_GET['folder_id'] : null;
+// Check permissions for current folder
+if (!empty($current_folder)) {
+    $folder = new \ProjectSend\Classes\Folder($current_folder);
+    if (!$folder->userCanNavigate($client_info['id'])) {
+        exit_with_error_code(403);
+    }
+}
+
+$folders_arguments = [
+    'parent' => $current_folder,
+];
+if (get_option('clients_files_list_include_public')) {
+    $folders_arguments['public_or_client'] = true;
+    $folders_arguments['client_id'] = $client_info['id'];
+} else {
+    $folders_arguments['user_id'] = $client_info['id'];
+}
+if (!empty($_GET['search'])) {
+    $folders_arguments['search'] = $_GET['search'];
+}
+$folders_arguments['id_in'] = $folder_id_in;
+pax($folders_arguments);
+
+$folders_obj = new \ProjectSend\Classes\Folders;
+$folders = $folders_obj->getFolders($folders_arguments);
 
 /**
  * Make an array of the categories containing the
@@ -265,6 +277,7 @@ if (!empty($found_all_files_array)) {
 
             // Leaving this here in case a  custom template is using this array
             $pathinfo = pathinfo($data['url']);
+
             $my_files[$f] = [
                 //'origin' => $origin,
                 'id' => $data['id'],
