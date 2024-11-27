@@ -58,11 +58,11 @@ class Folders
 
     function getFolders($arguments = [])
     {
-        // Existing public flag fix
-        $queryx = "UPDATE `tbl_folders` set public = 1 ";
-        $statement = $this->dbh->prepare($queryx);
-        $statement->execute();
-        
+        // // Existing public flag fix
+        // $queryx = "UPDATE `tbl_folders` set public = 1 ";
+        // $statement = $this->dbh->prepare($queryx);
+        // $statement->execute();
+
         // Initialize $folders as an empty array
         $folders = [];
         

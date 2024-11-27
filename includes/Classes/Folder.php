@@ -107,13 +107,14 @@ class Folder
             $this->parent = (!empty($this->parent)) ? $this->parent : null;
             $this->slug = $slugify->slugify($this->name);
             $this->user_id = CURRENT_USER_ID;
+            $public = 1;
     
             $statement = $this->dbh->prepare("INSERT INTO " . TABLE_FOLDERS . " (uuid, name, slug, parent, public, user_id) VALUES (:uuid, :name, :slug, :parent, :public, :user_id)");
             $statement->bindParam(':uuid', $this->uuid);
             $statement->bindParam(':name', $this->name);
             $statement->bindParam(':slug', $this->slug);
             $statement->bindParam(':parent', $this->parent);
-            $statement->bindParam(':public', $this->public);
+            $statement->bindParam(':public', $public);
             $statement->bindParam(':user_id', $this->user_id);
             $statement->execute();
 
