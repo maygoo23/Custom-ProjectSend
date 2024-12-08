@@ -215,7 +215,7 @@ class Folders
 
     function getUserLevel($user_id)
     {
-        $query = "SELECT level FROM tbl_users WHERE id = :user_id";
+        $query = "SELECT level FROM " . TABLE_USERS . " WHERE id = :user_id";
         $statement = $this->dbh->prepare($query);
         $statement->execute([':user_id' => $user_id]);
         $result = $statement->fetch(\PDO::FETCH_ASSOC);
