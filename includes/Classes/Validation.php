@@ -91,7 +91,7 @@ class Validation
 
     private function alpha_underscores($value)
     {
-        return (preg_match('/[^0-9A-Za-z.]/', $value) != true);
+        return (preg_match('/[^0-9A-Za-z._]/', $value) != true);
     }
 
     private function password($value)
