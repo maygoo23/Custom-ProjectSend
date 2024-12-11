@@ -200,6 +200,8 @@ include_once LAYOUT_DIR . DS . 'search-filters-bar.php';
     <?php addCsrf(); ?>
     <?php include_once LAYOUT_DIR . DS . 'form-counts-actions.php'; ?>
 
+    <div class="row">
+    <div class="col-12">
     <?php
         if ($count > 0) {
             // Generate the table using the class.
