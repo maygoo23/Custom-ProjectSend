@@ -451,7 +451,7 @@ include_once LAYOUT_DIR . DS . 'search-filters-bar.php';
                         }
 
                         $custom_download_uri = get_option('custom_download_uri');
-                        if (!$custom_download_uri) $custom_download_uri = 'custom_downloads.php?link=';
+                        if (!$custom_download_uri) $custom_download_uri = 'custom-download.php?link=';
                         $custom_download_link = $custom_download_uri . $custom_download->link;
 
                         $title_content = '<a href="' . $custom_download_link . '" target="_blank">' . $custom_download->link . '</a>';
