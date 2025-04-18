@@ -87,7 +87,7 @@ class Options
         define('PUBLIC_GROUP_URL', BASE_URI . 'public.php');
 
         // Cron
-        define('CRON_COMMAND_EXAMPLE', '* /5 * * * /usr/bin/php ' . ROOT_DIR . '/cron.php key=' . $this->getOption('cron_key') . '  >/dev/null');
+        define('CRON_COMMAND_EXAMPLE', '*/5 * * * * /usr/bin/php ' . ROOT_DIR . '/cron.php key=' . $this->getOption('cron_key') . '  >/dev/null');
         define('CRON_URL', BASE_URI . 'cron.php?key=' . $this->getOption('cron_key'));
 
         // URLs
