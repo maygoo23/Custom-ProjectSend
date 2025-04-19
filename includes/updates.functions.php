@@ -3,6 +3,11 @@
  * Define the common functions used on the installer and updates.
  */
 
+function should_check_for_updates()
+{
+    return (get_option('prevent_updates_check') != 1);
+}
+
 function get_latest_version_data()
 {
     // Remove "r" from version

@@ -1,3 +1,14 @@
+<h3><?php _e('Updates','cftp_admin'); ?></h3>
+<div class="form-group row">
+    <div class="col-sm-8 offset-sm-4">
+        <label for="prevent_updates_check">
+            <input type="checkbox" value="1" name="prevent_updates_check" id="prevent_updates_check" class="checkbox_options" <?php echo (get_option('prevent_updates_check') == 1) ? 'checked="checked"' : ''; ?> /> <?php _e('Disable checking for new versions (use if your dashboard takes too long to load)','cftp_admin'); ?>
+        </label>
+    </div>
+</div>
+
+<div class="options_divide"></div>
+
 <h3><?php _e('Allowed file extensions','cftp_admin'); ?></h3>
 <p><?php _e('Be careful when changing this options. They could affect not only the system but the whole server it is installed on.','cftp_admin'); ?><br />
 <strong><?php _e('Important','cftp_admin'); ?></strong>: <?php _e('Separate allowed file types with a comma.','cftp_admin'); ?></p>
@@ -27,7 +38,6 @@
         </label>
     </div>
 </div>
-
 
 <div class="options_divide"></div>
 

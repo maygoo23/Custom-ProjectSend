@@ -67,6 +67,7 @@ switch ($section) {
     case 'security':
         $section_title = __('Security', 'cftp_admin');
         $checkboxes = array(
+            'prevent_updates_check',
             'svg_show_as_thumbnail',
             'pass_require_upper',
             'pass_require_lower',

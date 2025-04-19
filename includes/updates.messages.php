@@ -39,22 +39,34 @@
 
     // Used when a new version is found, but not if the current installation has just been updated.
     if ( CURRENT_USER_LEVEL != '0') {
-        $update_data = get_latest_version_data();
-        $update_data = json_decode($update_data);
-        if ($update_data->update_available == '1') {
-?>
+        if (!should_check_for_updates() && (basename($_SERVER["SCRIPT_FILENAME"], '.php') == 'dashboard')) {
+            ?>
             <div class="alert alert-warning update_msg">
                 <div class="row">
-                    <div class="col-sm-8">
-                        <strong><?php _e('Update available!', 'cftp_admin'); ?></strong> <?php echo sprintf( __('ProjectSend %s has been released', 'cftp_admin'), $update_data->latest_version); ?>
-                    </div>
-                    <div class="col-sm-4 text-right">
-                        <a href="<?php echo $update_data->url; ?>" class="btn btn-pslight btn-sm" target="_blank"><?php _e('Download', 'cftp_admin');?></a> <a href="<?php echo $update_data->chlog; ?>" target="_blank" class="btn btn-pslight btn-sm"><?php _e('Changelog', 'cftp_admin');?></a>
+                    <div class="col-12">
+                        <strong><?php _e('Important', 'cftp_admin'); ?></strong> <?php echo sprintf( __('Checking for updates has been disabled. Make sure to check periodically for a new release', 'cftp_admin')); ?>
                     </div>
                 </div>
             </div>
 <?php
-		}
+        } else {
+            $update_data = get_latest_version_data();
+            $update_data = json_decode($update_data);
+            if ($update_data->update_available == '1') {
+?>
+                <div class="alert alert-warning update_msg">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <strong><?php _e('Update available!', 'cftp_admin'); ?></strong> <?php echo sprintf( __('ProjectSend %s has been released', 'cftp_admin'), $update_data->latest_version); ?>
+                        </div>
+                        <div class="col-sm-4 text-right">
+                            <a href="<?php echo $update_data->url; ?>" class="btn btn-pslight btn-sm" target="_blank"><?php _e('Download', 'cftp_admin');?></a> <a href="<?php echo $update_data->chlog; ?>" target="_blank" class="btn btn-pslight btn-sm"><?php _e('Changelog', 'cftp_admin');?></a>
+                        </div>
+                    </div>
+                </div>
+<?php
+    		}
+        }
 	}
 
 	if ( isset( $updates_error_messages ) && !empty( $updates_error_messages ) ) {

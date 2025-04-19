@@ -16,11 +16,13 @@
 			<dt class="col-6 text-end"><?php _e('Version','cftp_admin'); ?></dt>
 			<dd class="col-6">
 				<?php echo CURRENT_VERSION; ?> <?php
-                    $update_data = get_latest_version_data();
-                    $update_data = json_decode($update_data);
-                    if ($update_data->update_available == '1') {
-						echo ' - <strong>'; _e('New version available','cftp_admin'); echo ':</strong> <a href="'. $update_data->url . '">' . $update_data->latest_version . '</a>';
-					}
+                    if (should_check_for_updates()) {
+                        $update_data = get_latest_version_data();
+                        $update_data = json_decode($update_data);
+                        if ($update_data->update_available == '1') {
+                            echo ' - <strong>'; _e('New version available','cftp_admin'); echo ':</strong> <a href="'. $update_data->url . '">' . $update_data->latest_version . '</a>';
+                        }
+                    }
 				?>
 			</dd>
 
